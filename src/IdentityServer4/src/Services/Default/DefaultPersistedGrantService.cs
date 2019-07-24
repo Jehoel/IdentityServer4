@@ -141,9 +141,9 @@ namespace IdentityServer4.Services
         /// <param name="subjectId">The subject identifier.</param>
         /// <param name="clientId">The client identifier.</param>
         /// <returns></returns>
-        public Task RemoveAllGrantsAsync(string subjectId, string clientId)
+        public Task RemoveAllGrantsAsync(string subjectId, string clientId, string reason)
         {
-            return _store.RemoveAllAsync(subjectId, clientId);
+            return _store.RemoveAllAsync(subjectId, clientId, reason);
         }
     }
 }

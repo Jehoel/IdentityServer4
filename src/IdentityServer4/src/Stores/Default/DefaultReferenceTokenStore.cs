@@ -36,9 +36,9 @@ namespace IdentityServer4.Stores
         /// </summary>
         /// <param name="token">The token.</param>
         /// <returns></returns>
-        public Task<string> StoreReferenceTokenAsync(Token token)
+        public Task<string> StoreReferenceTokenAsync(Token token, string reason)
         {
-            return CreateItemAsync(token, token.ClientId, token.SubjectId, token.CreationTime, token.Lifetime);
+            return CreateItemAsync(token, token.ClientId, token.SubjectId, token.CreationTime, token.Lifetime, reason);
         }
 
         /// <summary>
@@ -56,9 +56,9 @@ namespace IdentityServer4.Stores
         /// </summary>
         /// <param name="handle">The handle.</param>
         /// <returns></returns>
-        public Task RemoveReferenceTokenAsync(string handle)
+        public Task RemoveReferenceTokenAsync(string handle, string reason)
         {
-            return RemoveItemAsync(handle);
+            return RemoveItemAsync(handle, reason);
         }
 
         /// <summary>
@@ -67,9 +67,9 @@ namespace IdentityServer4.Stores
         /// <param name="subjectId">The subject identifier.</param>
         /// <param name="clientId">The client identifier.</param>
         /// <returns></returns>
-        public Task RemoveReferenceTokensAsync(string subjectId, string clientId)
+        public Task RemoveReferenceTokensAsync(string subjectId, string clientId, string reason)
         {
-            return RemoveAllAsync(subjectId, clientId);
+            return RemoveAllAsync(subjectId, clientId, reason);
         }
     }
 }

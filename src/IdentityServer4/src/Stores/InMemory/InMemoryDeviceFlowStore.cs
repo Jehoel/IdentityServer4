@@ -24,7 +24,7 @@ namespace IdentityServer4.Stores
         /// <param name="userCode">The user code.</param>
         /// <param name="data">The data.</param>
         /// <returns></returns>
-        public Task StoreDeviceAuthorizationAsync(string deviceCode, string userCode, DeviceCode data)
+        public Task StoreDeviceAuthorizationAsync(string deviceCode, string userCode, DeviceCode data, string reason)
         {
             lock (_repository)
             {
@@ -71,7 +71,7 @@ namespace IdentityServer4.Stores
         /// </summary>
         /// <param name="userCode">The user code.</param>
         /// <param name="data">The data.</param>
-        public Task UpdateByUserCodeAsync(string userCode, DeviceCode data)
+        public Task UpdateByUserCodeAsync(string userCode, DeviceCode data, string reason)
         {
             lock (_repository)
             {
@@ -91,7 +91,7 @@ namespace IdentityServer4.Stores
         /// </summary>
         /// <param name="deviceCode">The device code.</param>
         /// <returns></returns>
-        public Task RemoveByDeviceCodeAsync(string deviceCode)
+        public Task RemoveByDeviceCodeAsync(string deviceCode, string reason)
         {
             lock (_repository)
             {

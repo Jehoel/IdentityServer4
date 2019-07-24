@@ -117,10 +117,10 @@ namespace IdentityServer4.Stores
         /// <param name="created">The created.</param>
         /// <param name="lifetime">The lifetime.</param>
         /// <returns></returns>
-        protected virtual async Task<string> CreateItemAsync(T item, string clientId, string subjectId, DateTime created, int lifetime)
+        protected virtual async Task<string> CreateItemAsync(T item, string clientId, string subjectId, DateTime created, int lifetime, string reason)
         {
             var handle = await HandleGenerationService.GenerateAsync();
-            await StoreItemAsync(handle, item, clientId, subjectId, created, created.AddSeconds(lifetime));
+            await StoreItemAsync(handle, item, clientId, subjectId, created, created.AddSeconds(lifetime), reason);
             return handle;
         }
 
@@ -134,9 +134,9 @@ namespace IdentityServer4.Stores
         /// <param name="created">The created.</param>
         /// <param name="lifetime">The lifetime.</param>
         /// <returns></returns>
-        protected virtual Task StoreItemAsync(string key, T item, string clientId, string subjectId, DateTime created, int lifetime)
+        protected virtual Task StoreItemAsync(string key, T item, string clientId, string subjectId, DateTime created, int lifetime, string reason)
         {
-            return StoreItemAsync(key, item, clientId, subjectId, created, created.AddSeconds(lifetime));
+            return StoreItemAsync(key, item, clientId, subjectId, created, created.AddSeconds(lifetime), reason);
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace IdentityServer4.Stores
         /// <param name="created">The created.</param>
         /// <param name="expiration">The expiration.</param>
         /// <returns></returns>
-        protected virtual async Task StoreItemAsync(string key, T item, string clientId, string subjectId, DateTime created, DateTime? expiration)
+        protected virtual async Task StoreItemAsync(string key, T item, string clientId, string subjectId, DateTime created, DateTime? expiration, string reason)
         {
             key = GetHashedKey(key);
 
@@ -166,7 +166,7 @@ namespace IdentityServer4.Stores
                 Data = json
             };
 
-            await Store.StoreAsync(grant);
+            await Store.StoreAsync(grant, reason);
         }
 
         /// <summary>
@@ -174,10 +174,10 @@ namespace IdentityServer4.Stores
         /// </summary>
         /// <param name="key">The key.</param>
         /// <returns></returns>
-        protected virtual async Task RemoveItemAsync(string key)
+        protected virtual async Task RemoveItemAsync(string key, string reason)
         {
             key = GetHashedKey(key);
-            await Store.RemoveAsync(key);
+            await Store.RemoveAsync(key, reason);
         }
 
         /// <summary>
@@ -186,9 +186,9 @@ namespace IdentityServer4.Stores
         /// <param name="subjectId">The subject identifier.</param>
         /// <param name="clientId">The client identifier.</param>
         /// <returns></returns>
-        protected virtual async Task RemoveAllAsync(string subjectId, string clientId)
+        protected virtual async Task RemoveAllAsync(string subjectId, string clientId, string reason)
         {
-            await Store.RemoveAllAsync(subjectId, clientId, GrantType);
+            await Store.RemoveAllAsync(subjectId, clientId, GrantType, reason);
         }
     }
 }

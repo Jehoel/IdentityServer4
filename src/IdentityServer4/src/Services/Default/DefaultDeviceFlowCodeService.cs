@@ -31,11 +31,11 @@ namespace IdentityServer4.Services.Default
         /// <param name="userCode">The user code.</param>
         /// <param name="data">The data.</param>
         /// <returns></returns>
-        public async Task<string> StoreDeviceAuthorizationAsync(string userCode, DeviceCode data)
+        public async Task<string> StoreDeviceAuthorizationAsync(string userCode, DeviceCode data, string reason)
         {
             var deviceCode = await _handleGenerationService.GenerateAsync();
 
-            await _store.StoreDeviceAuthorizationAsync(deviceCode.Sha256(), userCode.Sha256(), data);
+            await _store.StoreDeviceAuthorizationAsync(deviceCode.Sha256(), userCode.Sha256(), data, reason);
 
             return deviceCode;
         }
@@ -66,9 +66,9 @@ namespace IdentityServer4.Services.Default
         /// <param name="userCode">The user code.</param>
         /// <param name="data">The data.</param>
         /// <returns></returns>
-        public Task UpdateByUserCodeAsync(string userCode, DeviceCode data)
+        public Task UpdateByUserCodeAsync(string userCode, DeviceCode data, string reason)
         {
-            return _store.UpdateByUserCodeAsync(userCode.Sha256(), data);
+            return _store.UpdateByUserCodeAsync(userCode.Sha256(), data, reason);
         }
 
         /// <summary>
@@ -76,9 +76,9 @@ namespace IdentityServer4.Services.Default
         /// </summary>
         /// <param name="deviceCode">The device code.</param>
         /// <returns></returns>
-        public Task RemoveByDeviceCodeAsync(string deviceCode)
+        public Task RemoveByDeviceCodeAsync(string deviceCode, string reason)
         {
-            return _store.RemoveByDeviceCodeAsync(deviceCode.Sha256());
+            return _store.RemoveByDeviceCodeAsync(deviceCode.Sha256(), reason);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace IdentityServer4.Stores
         /// </summary>
         /// <param name="grant">The grant.</param>
         /// <returns></returns>
-        public Task StoreAsync(PersistedGrant grant)
+        public Task StoreAsync(PersistedGrant grant, string reason)
         {
             _repository[grant.Key] = grant;
 
@@ -66,7 +66,7 @@ namespace IdentityServer4.Stores
         /// </summary>
         /// <param name="key">The key.</param>
         /// <returns></returns>
-        public Task RemoveAsync(string key)
+        public Task RemoveAsync(string key, string reason)
         {
             _repository.TryRemove(key, out _);
 
@@ -79,7 +79,7 @@ namespace IdentityServer4.Stores
         /// <param name="subjectId">The subject identifier.</param>
         /// <param name="clientId">The client identifier.</param>
         /// <returns></returns>
-        public Task RemoveAllAsync(string subjectId, string clientId)
+        public Task RemoveAllAsync(string subjectId, string clientId, string reason)
         {
             var query =
                 from item in _repository
@@ -103,7 +103,7 @@ namespace IdentityServer4.Stores
         /// <param name="clientId">The client identifier.</param>
         /// <param name="type">The type.</param>
         /// <returns></returns>
-        public Task RemoveAllAsync(string subjectId, string clientId, string type)
+        public Task RemoveAllAsync(string subjectId, string clientId, string type, string reason)
         {
             var query =
                 from item in _repository

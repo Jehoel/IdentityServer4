@@ -41,10 +41,10 @@ namespace IdentityServer4.Stores
         /// </summary>
         /// <param name="consent">The consent.</param>
         /// <returns></returns>
-        public Task StoreUserConsentAsync(Consent consent)
+        public Task StoreUserConsentAsync(Consent consent, string reason)
         {
             var key = GetConsentKey(consent.SubjectId, consent.ClientId);
-            return StoreItemAsync(key, consent, consent.ClientId, consent.SubjectId, consent.CreationTime, consent.Expiration);
+            return StoreItemAsync(key, consent, consent.ClientId, consent.SubjectId, consent.CreationTime, consent.Expiration, reason);
         }
 
         /// <summary>
@@ -65,10 +65,10 @@ namespace IdentityServer4.Stores
         /// <param name="subjectId">The subject identifier.</param>
         /// <param name="clientId">The client identifier.</param>
         /// <returns></returns>
-        public Task RemoveUserConsentAsync(string subjectId, string clientId)
+        public Task RemoveUserConsentAsync(string subjectId, string clientId, string reason)
         {
             var key = GetConsentKey(subjectId, clientId);
-            return RemoveItemAsync(key);
+            return RemoveItemAsync(key, reason);
         }
     }
 }

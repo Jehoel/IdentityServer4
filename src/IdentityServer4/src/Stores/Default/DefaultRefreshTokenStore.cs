@@ -36,9 +36,9 @@ namespace IdentityServer4.Stores
         /// </summary>
         /// <param name="refreshToken">The refresh token.</param>
         /// <returns></returns>
-        public async Task<string> StoreRefreshTokenAsync(RefreshToken refreshToken)
+        public async Task<string> StoreRefreshTokenAsync(RefreshToken refreshToken, string reason)
         {
-            return await CreateItemAsync(refreshToken, refreshToken.ClientId, refreshToken.SubjectId, refreshToken.CreationTime, refreshToken.Lifetime);
+            return await CreateItemAsync(refreshToken, refreshToken.ClientId, refreshToken.SubjectId, refreshToken.CreationTime, refreshToken.Lifetime, reason);
         }
 
         /// <summary>
@@ -47,9 +47,9 @@ namespace IdentityServer4.Stores
         /// <param name="handle">The handle.</param>
         /// <param name="refreshToken">The refresh token.</param>
         /// <returns></returns>
-        public Task UpdateRefreshTokenAsync(string handle, RefreshToken refreshToken)
+        public Task UpdateRefreshTokenAsync(string handle, RefreshToken refreshToken, string reason)
         {
-            return StoreItemAsync(handle, refreshToken, refreshToken.ClientId, refreshToken.SubjectId, refreshToken.CreationTime, refreshToken.Lifetime);
+            return StoreItemAsync(handle, refreshToken, refreshToken.ClientId, refreshToken.SubjectId, refreshToken.CreationTime, refreshToken.Lifetime, reason);
         }
 
         /// <summary>
@@ -67,9 +67,9 @@ namespace IdentityServer4.Stores
         /// </summary>
         /// <param name="refreshTokenHandle">The refresh token handle.</param>
         /// <returns></returns>
-        public Task RemoveRefreshTokenAsync(string refreshTokenHandle)
+        public Task RemoveRefreshTokenAsync(string refreshTokenHandle, string reason)
         {
-            return RemoveItemAsync(refreshTokenHandle);
+            return RemoveItemAsync(refreshTokenHandle, reason);
         }
 
         /// <summary>
@@ -78,9 +78,9 @@ namespace IdentityServer4.Stores
         /// <param name="subjectId">The subject identifier.</param>
         /// <param name="clientId">The client identifier.</param>
         /// <returns></returns>
-        public Task RemoveRefreshTokensAsync(string subjectId, string clientId)
+        public Task RemoveRefreshTokensAsync(string subjectId, string clientId, string reason)
         {
-            return RemoveAllAsync(subjectId, clientId);
+            return RemoveAllAsync(subjectId, clientId, reason);
         }
     }
 }

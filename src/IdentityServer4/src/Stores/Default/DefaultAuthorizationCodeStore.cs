@@ -37,9 +37,9 @@ namespace IdentityServer4.Stores
         /// </summary>
         /// <param name="code">The code.</param>
         /// <returns></returns>
-        public Task<string> StoreAuthorizationCodeAsync(AuthorizationCode code)
+        public Task<string> StoreAuthorizationCodeAsync(AuthorizationCode code, string reason)
         {
-            return CreateItemAsync(code, code.ClientId, code.Subject.GetSubjectId(), code.CreationTime, code.Lifetime);
+            return CreateItemAsync(code, code.ClientId, code.Subject.GetSubjectId(), code.CreationTime, code.Lifetime, reason);
         }
 
         /// <summary>
@@ -57,9 +57,9 @@ namespace IdentityServer4.Stores
         /// </summary>
         /// <param name="code">The code.</param>
         /// <returns></returns>
-        public Task RemoveAuthorizationCodeAsync(string code)
+        public Task RemoveAuthorizationCodeAsync(string code, string reason)
         {
-            return RemoveItemAsync(code);
+            return RemoveItemAsync(code, reason);
         }
     }
 }
