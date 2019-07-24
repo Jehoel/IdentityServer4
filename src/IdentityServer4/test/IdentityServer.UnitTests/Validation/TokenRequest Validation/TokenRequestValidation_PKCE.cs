@@ -50,7 +50,7 @@ namespace IdentityServer4.UnitTests.Validation.TokenRequest
                 }
             };
 
-            var handle = await grants.StoreAuthorizationCodeAsync(code);
+            var handle = await grants.StoreAuthorizationCodeAsync(code, "unit_test");
 
             var validator = Factory.CreateTokenRequestValidator(
                 authorizationCodeStore: grants);
@@ -90,7 +90,7 @@ namespace IdentityServer4.UnitTests.Validation.TokenRequest
                 }
             };
 
-            var handle = await grants.StoreAuthorizationCodeAsync(code);
+            var handle = await grants.StoreAuthorizationCodeAsync(code, "unit_test");
 
             var validator = Factory.CreateTokenRequestValidator(
                 authorizationCodeStore: grants);
@@ -134,7 +134,7 @@ namespace IdentityServer4.UnitTests.Validation.TokenRequest
                 }
             };
 
-            var handle = await grants.StoreAuthorizationCodeAsync(code);
+            var handle = await grants.StoreAuthorizationCodeAsync(code, "unit_test");
 
             var validator = Factory.CreateTokenRequestValidator(
                 authorizationCodeStore: grants);
@@ -171,7 +171,7 @@ namespace IdentityServer4.UnitTests.Validation.TokenRequest
                 }
             };
 
-            var handle = await grants.StoreAuthorizationCodeAsync(code);
+            var handle = await grants.StoreAuthorizationCodeAsync(code, "unit_test");
 
             var validator = Factory.CreateTokenRequestValidator(
                 authorizationCodeStore: grants);
@@ -210,7 +210,7 @@ namespace IdentityServer4.UnitTests.Validation.TokenRequest
                 }
             };
 
-            var handle = await grants.StoreAuthorizationCodeAsync(code);
+            var handle = await grants.StoreAuthorizationCodeAsync(code, "unit_test");
 
             var validator = Factory.CreateTokenRequestValidator(
                 authorizationCodeStore: grants);
@@ -253,7 +253,7 @@ namespace IdentityServer4.UnitTests.Validation.TokenRequest
                 }
             };
 
-            var handle = await grants.StoreAuthorizationCodeAsync(code);
+            var handle = await grants.StoreAuthorizationCodeAsync(code, "unit_test");
 
             var validator = Factory.CreateTokenRequestValidator(
                 authorizationCodeStore: grants);
@@ -298,7 +298,7 @@ namespace IdentityServer4.UnitTests.Validation.TokenRequest
                 }
             };
 
-            var handle = await grants.StoreAuthorizationCodeAsync(code);
+            var handle = await grants.StoreAuthorizationCodeAsync(code, "unit_test");
 
             var validator = Factory.CreateTokenRequestValidator(
                 authorizationCodeStore: grants);

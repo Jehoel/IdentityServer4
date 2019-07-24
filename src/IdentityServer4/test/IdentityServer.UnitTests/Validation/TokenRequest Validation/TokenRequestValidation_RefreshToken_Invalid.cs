@@ -73,7 +73,7 @@ namespace IdentityServer4.UnitTests.Validation.TokenRequest
             };
 
             var grants = Factory.CreateRefreshTokenStore();
-            var handle = await grants.StoreRefreshTokenAsync(refreshToken);
+            var handle = await grants.StoreRefreshTokenAsync(refreshToken, "unit_test");
 
             var client = await _clients.FindEnabledClientByIdAsync("roclient");
 
@@ -105,7 +105,7 @@ namespace IdentityServer4.UnitTests.Validation.TokenRequest
             };
 
             var grants = Factory.CreateRefreshTokenStore();
-            var handle = await grants.StoreRefreshTokenAsync(refreshToken);
+            var handle = await grants.StoreRefreshTokenAsync(refreshToken, "unit_test");
 
             var client = await _clients.FindEnabledClientByIdAsync("roclient");
 
@@ -137,7 +137,7 @@ namespace IdentityServer4.UnitTests.Validation.TokenRequest
             };
 
             var grants = Factory.CreateRefreshTokenStore();
-            var handle = await grants.StoreRefreshTokenAsync(refreshToken);
+            var handle = await grants.StoreRefreshTokenAsync(refreshToken, "unit_test");
 
             var client = await _clients.FindEnabledClientByIdAsync("roclient_restricted");
 
@@ -172,7 +172,7 @@ namespace IdentityServer4.UnitTests.Validation.TokenRequest
             };
 
             var grants = Factory.CreateRefreshTokenStore();
-            var handle = await grants.StoreRefreshTokenAsync(refreshToken);
+            var handle = await grants.StoreRefreshTokenAsync(refreshToken, "unit_test");
 
             var client = await _clients.FindEnabledClientByIdAsync("roclient");
 

@@ -20,7 +20,7 @@ namespace IdentityServer4.UnitTests.Common
             return Task.FromResult(GetAllGrantsResult ?? Enumerable.Empty<Consent>());
         }
 
-        public Task RemoveAllGrantsAsync(string subjectId, string clientId)
+        public Task RemoveAllGrantsAsync(string subjectId, string clientId, string reason)
         {
             RemoveAllGrantsWasCalled = true;
             return Task.CompletedTask;

@@ -54,7 +54,7 @@ namespace IdentityServer4.UnitTests.Validation
 
             var token = TokenFactory.CreateAccessToken(new Client { ClientId = "roclient" }, "valid", 600, "read", "write");
 
-            var handle = await store.StoreReferenceTokenAsync(token);
+            var handle = await store.StoreReferenceTokenAsync(token, "unit_test");
 
             var result = await validator.ValidateAccessTokenAsync(handle);
 
@@ -72,7 +72,7 @@ namespace IdentityServer4.UnitTests.Validation
 
             var token = TokenFactory.CreateAccessToken(new Client { ClientId = "roclient" }, "valid", 600, "read", "write");
 
-            var handle = await store.StoreReferenceTokenAsync(token);
+            var handle = await store.StoreReferenceTokenAsync(token, "unit_test");
 
             var result = await validator.ValidateAccessTokenAsync(handle, "read");
 
@@ -88,7 +88,7 @@ namespace IdentityServer4.UnitTests.Validation
 
             var token = TokenFactory.CreateAccessToken(new Client { ClientId = "roclient" }, "valid", 600, "read", "write");
 
-            var handle = await store.StoreReferenceTokenAsync(token);
+            var handle = await store.StoreReferenceTokenAsync(token, "unit_test");
 
             var result = await validator.ValidateAccessTokenAsync(handle, "missing");
 
@@ -134,7 +134,7 @@ namespace IdentityServer4.UnitTests.Validation
             var token = TokenFactory.CreateAccessToken(new Client { ClientId = "roclient" }, "valid", 2, "read", "write");
             token.CreationTime = now;
 
-            var handle = await store.StoreReferenceTokenAsync(token);
+            var handle = await store.StoreReferenceTokenAsync(token, "unit_test");
 
             now = now.AddSeconds(3);
 
@@ -225,7 +225,7 @@ namespace IdentityServer4.UnitTests.Validation
 
             var token = TokenFactory.CreateAccessToken(new Client { ClientId = "unknown" }, "valid", 600, "read", "write");
 
-            var handle = await store.StoreReferenceTokenAsync(token);
+            var handle = await store.StoreReferenceTokenAsync(token, "unit_test");
 
             var result = await validator.ValidateAccessTokenAsync(handle);
 

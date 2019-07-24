@@ -61,7 +61,7 @@ namespace IdentityServer.UnitTests.Validation
             var badActor = await _clients.FindClientByIdAsync("codeclient");
             var service = Factory.CreateDeviceCodeService();
 
-            var handle = await service.StoreDeviceAuthorizationAsync(Guid.NewGuid().ToString(), deviceCode);
+            var handle = await service.StoreDeviceAuthorizationAsync(Guid.NewGuid().ToString(), deviceCode, "unit_test");
 
             var validator = Factory.CreateDeviceCodeValidator(service);
 
@@ -86,7 +86,7 @@ namespace IdentityServer.UnitTests.Validation
             var client = await _clients.FindClientByIdAsync("device_flow");
             var service = Factory.CreateDeviceCodeService();
 
-            var handle = await service.StoreDeviceAuthorizationAsync(Guid.NewGuid().ToString(), deviceCode);
+            var handle = await service.StoreDeviceAuthorizationAsync(Guid.NewGuid().ToString(), deviceCode, "unit_test");
 
             var validator = Factory.CreateDeviceCodeValidator(service);
 
@@ -110,7 +110,7 @@ namespace IdentityServer.UnitTests.Validation
             var client = await _clients.FindClientByIdAsync("device_flow");
             var service = Factory.CreateDeviceCodeService();
 
-            var handle = await service.StoreDeviceAuthorizationAsync(Guid.NewGuid().ToString(), deviceCode);
+            var handle = await service.StoreDeviceAuthorizationAsync(Guid.NewGuid().ToString(), deviceCode, "unit_test");
 
             var validator = Factory.CreateDeviceCodeValidator(service);
 
@@ -134,7 +134,7 @@ namespace IdentityServer.UnitTests.Validation
             var client = await _clients.FindClientByIdAsync("device_flow");
             var service = Factory.CreateDeviceCodeService();
 
-            var handle = await service.StoreDeviceAuthorizationAsync(Guid.NewGuid().ToString(), deviceCode);
+            var handle = await service.StoreDeviceAuthorizationAsync(Guid.NewGuid().ToString(), deviceCode, "unit_test");
 
             var validator = Factory.CreateDeviceCodeValidator(service);
 
@@ -158,7 +158,7 @@ namespace IdentityServer.UnitTests.Validation
             var client = await _clients.FindClientByIdAsync("device_flow");
             var service = Factory.CreateDeviceCodeService();
 
-            var handle = await service.StoreDeviceAuthorizationAsync(Guid.NewGuid().ToString(), deviceCode);
+            var handle = await service.StoreDeviceAuthorizationAsync(Guid.NewGuid().ToString(), deviceCode, "unit_test");
 
             var validator = Factory.CreateDeviceCodeValidator(service);
 
@@ -181,7 +181,7 @@ namespace IdentityServer.UnitTests.Validation
             var client = await _clients.FindClientByIdAsync("device_flow");
             var service = Factory.CreateDeviceCodeService();
 
-            var handle = await service.StoreDeviceAuthorizationAsync(Guid.NewGuid().ToString(), deviceCode);
+            var handle = await service.StoreDeviceAuthorizationAsync(Guid.NewGuid().ToString(), deviceCode, "unit_test");
 
             var validator = Factory.CreateDeviceCodeValidator(service, new TestProfileService(false));
 
@@ -203,7 +203,7 @@ namespace IdentityServer.UnitTests.Validation
             var client = await _clients.FindClientByIdAsync("device_flow");
             var service = Factory.CreateDeviceCodeService();
 
-            var handle = await service.StoreDeviceAuthorizationAsync(Guid.NewGuid().ToString(), deviceCode);
+            var handle = await service.StoreDeviceAuthorizationAsync(Guid.NewGuid().ToString(), deviceCode, "unit_test");
 
             var validator = Factory.CreateDeviceCodeValidator(service, throttlingService: new TestDeviceFlowThrottlingService(true));
 
@@ -225,7 +225,7 @@ namespace IdentityServer.UnitTests.Validation
             var client = await _clients.FindClientByIdAsync("device_flow");
             var service = Factory.CreateDeviceCodeService();
 
-            var handle = await service.StoreDeviceAuthorizationAsync(Guid.NewGuid().ToString(), deviceCode);
+            var handle = await service.StoreDeviceAuthorizationAsync(Guid.NewGuid().ToString(), deviceCode, "unit_test");
 
             var validator = Factory.CreateDeviceCodeValidator(service);
 

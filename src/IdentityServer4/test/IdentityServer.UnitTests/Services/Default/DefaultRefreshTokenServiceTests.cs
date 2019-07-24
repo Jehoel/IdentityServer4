@@ -110,7 +110,7 @@ namespace IdentityServer.UnitTests.Services.Default
                 }
             };
 
-            var handle = await _store.StoreRefreshTokenAsync(refreshToken);
+            var handle = await _store.StoreRefreshTokenAsync(refreshToken, "unit_test");
 
             (await _subject.UpdateRefreshTokenAsync(handle, refreshToken, client))
                 .Should().NotBeNull()
@@ -146,7 +146,7 @@ namespace IdentityServer.UnitTests.Services.Default
                         new Claim("sub", "123")
                     }
                 }
-            });
+            }, "unit_test");
 
             var refreshToken = await _store.GetRefreshTokenAsync(handle);
             var newHandle = await _subject.UpdateRefreshTokenAsync(handle, refreshToken, client);
@@ -187,7 +187,7 @@ namespace IdentityServer.UnitTests.Services.Default
                         new Claim("sub", "123")
                     }
                 }
-            });
+            }, "unit_test");
 
             var refreshToken = await _store.GetRefreshTokenAsync(handle);
             var newHandle = await _subject.UpdateRefreshTokenAsync(handle, refreshToken, client);
@@ -228,7 +228,7 @@ namespace IdentityServer.UnitTests.Services.Default
                         new Claim("sub", "123")
                     }
                 }
-            });
+            }, "unit_test");
 
             var refreshToken = await _store.GetRefreshTokenAsync(handle);
             var newHandle = await _subject.UpdateRefreshTokenAsync(handle, refreshToken, client);
@@ -269,7 +269,7 @@ namespace IdentityServer.UnitTests.Services.Default
                         new Claim("sub", "123")
                     }
                 }
-            });
+            }, "unit_test");
 
             var refreshToken = await _store.GetRefreshTokenAsync(handle);
             var newHandle = await _subject.UpdateRefreshTokenAsync(handle, refreshToken, client);

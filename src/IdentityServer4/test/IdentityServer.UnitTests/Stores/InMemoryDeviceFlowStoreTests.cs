@@ -29,7 +29,7 @@ namespace IdentityServer.UnitTests.Stores
                 RequestedScopes = new[] {"scope1", "scope2"}
             };
 
-            await _store.StoreDeviceAuthorizationAsync(deviceCode, userCode, data);
+            await _store.StoreDeviceAuthorizationAsync(deviceCode, userCode, data, "unit_test");
             var foundData = await _store.FindByUserCodeAsync(userCode);
 
             foundData.ClientId.Should().Be(data.ClientId);
@@ -57,7 +57,7 @@ namespace IdentityServer.UnitTests.Stores
                 RequestedScopes = new[] {"scope1", "scope2"}
             };
 
-            await _store.StoreDeviceAuthorizationAsync(deviceCode, userCode, data);
+            await _store.StoreDeviceAuthorizationAsync(deviceCode, userCode, data, "unit_test");
             var foundData = await _store.FindByDeviceCodeAsync(deviceCode);
 
             foundData.ClientId.Should().Be(data.ClientId);
@@ -85,7 +85,7 @@ namespace IdentityServer.UnitTests.Stores
                 RequestedScopes = new[] {"scope1", "scope2"}
             };
 
-            await _store.StoreDeviceAuthorizationAsync(deviceCode, userCode, initialData);
+            await _store.StoreDeviceAuthorizationAsync(deviceCode, userCode, initialData, "unit_test");
 
             var updatedData = new DeviceCode
             {
@@ -98,7 +98,7 @@ namespace IdentityServer.UnitTests.Stores
                 RequestedScopes = new[] {"api1", "api2"}
             };
 
-            await _store.UpdateByUserCodeAsync(userCode, updatedData);
+            await _store.UpdateByUserCodeAsync(userCode, updatedData, "unit_test");
 
             var foundData = await _store.FindByUserCodeAsync(userCode);
 
@@ -127,8 +127,8 @@ namespace IdentityServer.UnitTests.Stores
                 RequestedScopes = new[] { "scope1", "scope2" }
             };
 
-            await _store.StoreDeviceAuthorizationAsync(deviceCode, userCode, data);
-            await _store.RemoveByDeviceCodeAsync(deviceCode);
+            await _store.StoreDeviceAuthorizationAsync(deviceCode, userCode, data, "unit_test");
+            await _store.RemoveByDeviceCodeAsync(deviceCode, "unit_test");
             var foundData = await _store.FindByUserCodeAsync(userCode);
 
             foundData.Should().BeNull();

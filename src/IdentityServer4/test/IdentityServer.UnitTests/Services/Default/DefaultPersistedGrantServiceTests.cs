@@ -61,21 +61,21 @@ namespace IdentityServer4.UnitTests.Services.Default
                 ClientId = "client1",
                 SubjectId = "123",
                 Scopes = new string[] { "foo1", "foo2" }
-            });
+            }, "unit_test");
             await _userConsent.StoreUserConsentAsync(new Consent()
             {
                 CreationTime = DateTime.UtcNow,
                 ClientId = "client2",
                 SubjectId = "123",
                 Scopes = new string[] { "foo3" }
-            });
+            }, "unit_test");
             await _userConsent.StoreUserConsentAsync(new Consent()
             {
                 CreationTime = DateTime.UtcNow,
                 ClientId = "client1",
                 SubjectId = "456",
                 Scopes = new string[] { "foo3" }
-            });
+            }, "unit_test");
 
             var handle1 = await _referenceTokens.StoreReferenceTokenAsync(new Token()
             {
@@ -89,7 +89,7 @@ namespace IdentityServer4.UnitTests.Services.Default
                     new Claim("scope", "bar1"),
                     new Claim("scope", "bar2")
                 }
-            });
+            }, "unit_test");
 
             var handle2 = await _referenceTokens.StoreReferenceTokenAsync(new Token()
             {
@@ -102,7 +102,7 @@ namespace IdentityServer4.UnitTests.Services.Default
                     new Claim("sub", "123"),
                     new Claim("scope", "bar3")
                 }
-            });
+            }, "unit_test");
 
             var handle3 = await _referenceTokens.StoreReferenceTokenAsync(new Token()
             {
@@ -115,7 +115,7 @@ namespace IdentityServer4.UnitTests.Services.Default
                     new Claim("sub", "456"),
                     new Claim("scope", "bar3")
                 }
-            });
+            }, "unit_test");
 
             var handle4 = await _refreshTokens.StoreRefreshTokenAsync(new RefreshToken()
             {
@@ -135,7 +135,7 @@ namespace IdentityServer4.UnitTests.Services.Default
                     }
                 },
                 Version = 1
-            });
+            }, "unit_test");
             var handle5 = await _refreshTokens.StoreRefreshTokenAsync(new RefreshToken()
             {
                 CreationTime = DateTime.UtcNow,
@@ -153,7 +153,7 @@ namespace IdentityServer4.UnitTests.Services.Default
                     }
                 },
                 Version = 1
-            });
+            }, "unit_test");
             var handle6 = await _refreshTokens.StoreRefreshTokenAsync(new RefreshToken()
             {
                 CreationTime = DateTime.UtcNow,
@@ -171,7 +171,7 @@ namespace IdentityServer4.UnitTests.Services.Default
                     }
                 },
                 Version = 1
-            });
+            }, "unit_test");
 
             var handle7 = await _codes.StoreAuthorizationCodeAsync(new AuthorizationCode()
             {
@@ -183,7 +183,7 @@ namespace IdentityServer4.UnitTests.Services.Default
                 RedirectUri = "http://client/cb",
                 Nonce = "nonce",
                 RequestedScopes = new string[] { "quux1", "quux2" }
-            });
+            }, "unit_test");
 
             var handle8 = await _codes.StoreAuthorizationCodeAsync(new AuthorizationCode()
             {
@@ -195,7 +195,7 @@ namespace IdentityServer4.UnitTests.Services.Default
                 RedirectUri = "http://client/cb",
                 Nonce = "nonce",
                 RequestedScopes = new string[] { "quux3" }
-            });
+            }, "unit_test");
 
             var handle9 = await _codes.StoreAuthorizationCodeAsync(new AuthorizationCode()
             {
@@ -207,7 +207,7 @@ namespace IdentityServer4.UnitTests.Services.Default
                 RedirectUri = "http://client/cb",
                 Nonce = "nonce",
                 RequestedScopes = new string[] { "quux3" }
-            });
+            }, "unit_test");
 
             var grants = await _subject.GetAllGrantsAsync("123");
 
@@ -231,19 +231,19 @@ namespace IdentityServer4.UnitTests.Services.Default
                 ClientId = "client1",
                 SubjectId = "123",
                 Scopes = new string[] { "foo1", "foo2" }
-            });
+            }, "unit_test");
             await _userConsent.StoreUserConsentAsync(new Consent()
             {
                 ClientId = "client2",
                 SubjectId = "123",
                 Scopes = new string[] { "foo3" }
-            });
+            }, "unit_test");
             await _userConsent.StoreUserConsentAsync(new Consent()
             {
                 ClientId = "client1",
                 SubjectId = "456",
                 Scopes = new string[] { "foo3" }
-            });
+            }, "unit_test");
 
             var handle1 = await _referenceTokens.StoreReferenceTokenAsync(new Token()
             {
@@ -258,7 +258,7 @@ namespace IdentityServer4.UnitTests.Services.Default
                     new Claim("scope", "bar1"),
                     new Claim("scope", "bar2")
                 }
-            });
+            }, "unit_test");
 
             var handle2 = await _referenceTokens.StoreReferenceTokenAsync(new Token()
             {
@@ -272,7 +272,7 @@ namespace IdentityServer4.UnitTests.Services.Default
                     new Claim("sub", "123"),
                     new Claim("scope", "bar3")
                 }
-            });
+            }, "unit_test");
 
             var handle3 = await _referenceTokens.StoreReferenceTokenAsync(new Token()
             {
@@ -286,7 +286,7 @@ namespace IdentityServer4.UnitTests.Services.Default
                     new Claim("sub", "456"),
                     new Claim("scope", "bar3")
                 }
-            });
+            }, "unit_test");
 
             var handle4 = await _refreshTokens.StoreRefreshTokenAsync(new RefreshToken()
             {
@@ -306,7 +306,7 @@ namespace IdentityServer4.UnitTests.Services.Default
                     }
                 },
                 Version = 1
-            });
+            }, "unit_test");
             var handle5 = await _refreshTokens.StoreRefreshTokenAsync(new RefreshToken()
             {
                 CreationTime = DateTime.UtcNow,
@@ -324,7 +324,7 @@ namespace IdentityServer4.UnitTests.Services.Default
                     }
                 },
                 Version = 1
-            });
+            }, "unit_test");
             var handle6 = await _refreshTokens.StoreRefreshTokenAsync(new RefreshToken()
             {
                 CreationTime = DateTime.UtcNow,
@@ -342,7 +342,7 @@ namespace IdentityServer4.UnitTests.Services.Default
                     }
                 },
                 Version = 1
-            });
+            }, "unit_test");
 
             var handle7 = await _codes.StoreAuthorizationCodeAsync(new AuthorizationCode()
             {
@@ -354,7 +354,7 @@ namespace IdentityServer4.UnitTests.Services.Default
                 RedirectUri = "http://client/cb",
                 Nonce = "nonce",
                 RequestedScopes = new string[] { "quux1", "quux2" }
-            });
+            }, "unit_test");
 
             var handle8 = await _codes.StoreAuthorizationCodeAsync(new AuthorizationCode()
             {
@@ -366,7 +366,7 @@ namespace IdentityServer4.UnitTests.Services.Default
                 RedirectUri = "http://client/cb",
                 Nonce = "nonce",
                 RequestedScopes = new string[] { "quux3" }
-            });
+            }, "unit_test");
 
             var handle9 = await _codes.StoreAuthorizationCodeAsync(new AuthorizationCode()
             {
@@ -378,9 +378,9 @@ namespace IdentityServer4.UnitTests.Services.Default
                 RedirectUri = "http://client/cb",
                 Nonce = "nonce",
                 RequestedScopes = new string[] { "quux3" }
-            });
+            }, "unit_test");
 
-            await _subject.RemoveAllGrantsAsync("123", "client1");
+            await _subject.RemoveAllGrantsAsync("123", "client1", "unit_test");
 
             (await _referenceTokens.GetReferenceTokenAsync(handle1)).Should().BeNull();
             (await _referenceTokens.GetReferenceTokenAsync(handle2)).Should().NotBeNull();
@@ -401,7 +401,7 @@ namespace IdentityServer4.UnitTests.Services.Default
                 ClientId = "client1",
                 SubjectId = "123",
                 Scopes = new string[] { "foo1", "foo2" }
-            });
+            }, "unit_test");
 
             var grants = await _subject.GetAllGrantsAsync("123");
 
@@ -418,7 +418,7 @@ namespace IdentityServer4.UnitTests.Services.Default
                 RedirectUri = "http://client/cb",
                 Nonce = "nonce",
                 RequestedScopes = new string[] { "quux3" }
-            });
+            }, "unit_test");
 
             grants = await _subject.GetAllGrantsAsync("123");
 

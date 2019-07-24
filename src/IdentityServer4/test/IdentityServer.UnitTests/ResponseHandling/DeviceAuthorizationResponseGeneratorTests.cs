@@ -83,7 +83,7 @@ namespace IdentityServer4.UnitTests.ResponseHandling
             clock.UtcNowFunc = () => creationTime;
 
             testResult.ValidatedRequest.Client.UserCodeType = FakeUserCodeGenerator.UserCodeTypeValue;
-            await deviceFlowCodeService.StoreDeviceAuthorizationAsync(FakeUserCodeGenerator.TestCollisionUserCode, new DeviceCode());
+            await deviceFlowCodeService.StoreDeviceAuthorizationAsync(FakeUserCodeGenerator.TestCollisionUserCode, new DeviceCode(), "unit_test");
 
             var response = await generator.ProcessAsync(testResult, TestBaseUrl);
 
@@ -98,7 +98,7 @@ namespace IdentityServer4.UnitTests.ResponseHandling
 
             fakeUserCodeGenerator.RetryLimit = 1;
             testResult.ValidatedRequest.Client.UserCodeType = FakeUserCodeGenerator.UserCodeTypeValue;
-            await deviceFlowCodeService.StoreDeviceAuthorizationAsync(FakeUserCodeGenerator.TestCollisionUserCode, new DeviceCode());
+            await deviceFlowCodeService.StoreDeviceAuthorizationAsync(FakeUserCodeGenerator.TestCollisionUserCode, new DeviceCode(), "unit_test");
 
             await Assert.ThrowsAsync<InvalidOperationException>(() => generator.ProcessAsync(testResult, TestBaseUrl));
         }

@@ -65,7 +65,7 @@ namespace IdentityServer4.UnitTests.Validation.TokenRequest
                 Subject = _subject
             };
 
-            var handle = await store.StoreAuthorizationCodeAsync(code);
+            var handle = await store.StoreAuthorizationCodeAsync(code, "unit_test");
 
             var validator = Factory.CreateTokenRequestValidator(
                 authorizationCodeStore: store);
@@ -117,7 +117,7 @@ namespace IdentityServer4.UnitTests.Validation.TokenRequest
                 Subject = _subject
             };
 
-            var handle = await store.StoreAuthorizationCodeAsync(code);
+            var handle = await store.StoreAuthorizationCodeAsync(code, "unit_test");
 
             var validator = Factory.CreateTokenRequestValidator(
                 authorizationCodeStore: store);

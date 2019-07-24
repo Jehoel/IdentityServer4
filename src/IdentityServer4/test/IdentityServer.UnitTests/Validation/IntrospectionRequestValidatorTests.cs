@@ -45,7 +45,7 @@ namespace IdentityServer4.UnitTests.Validation
                     new System.Security.Claims.Claim("scope", "b")
                 }
             };
-            var handle = await _referenceTokenStore.StoreReferenceTokenAsync(token);
+            var handle = await _referenceTokenStore.StoreReferenceTokenAsync(token, "unit_test");
             
             var param = new NameValueCollection()
             {

@@ -24,9 +24,9 @@ namespace IdentityServer4.UnitTests.Common
                TestLogger.Create<DefaultUserConsentStore>());
         }
 
-        public Task StoreUserConsentAsync(Consent consent)
+        public Task StoreUserConsentAsync(Consent consent, string reason)
         {
-            return _userConsentStore.StoreUserConsentAsync(consent);
+            return _userConsentStore.StoreUserConsentAsync(consent, reason);
         }
 
         public Task<Consent> GetUserConsentAsync(string subjectId, string clientId)
@@ -34,9 +34,9 @@ namespace IdentityServer4.UnitTests.Common
             return _userConsentStore.GetUserConsentAsync(subjectId, clientId);
         }
 
-        public Task RemoveUserConsentAsync(string subjectId, string clientId)
+        public Task RemoveUserConsentAsync(string subjectId, string clientId, string reason)
         {
-            return _userConsentStore.RemoveUserConsentAsync(subjectId, clientId);
+            return _userConsentStore.RemoveUserConsentAsync(subjectId, clientId, reason);
         }
     }
 }
