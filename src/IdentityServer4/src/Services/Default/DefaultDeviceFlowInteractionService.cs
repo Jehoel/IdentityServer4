@@ -66,7 +66,7 @@ namespace IdentityServer4.Services
                 //await _consentMessageStore.WriteAsync(consentRequest.Id, new Message<ConsentResponse>(consent, _clock.UtcNow.UtcDateTime));
             }
 
-            await _devices.UpdateByUserCodeAsync(userCode, deviceAuth);
+            await _devices.UpdateByUserCodeAsync(userCode, deviceAuth, "device_flow_authorized");
 
             return new DeviceFlowInteractionResult();
         }

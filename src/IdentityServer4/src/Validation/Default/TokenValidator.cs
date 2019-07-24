@@ -341,7 +341,7 @@ namespace IdentityServer4.Validation
             {
                 LogError("Token expired.");
 
-                await _referenceTokenStore.RemoveReferenceTokenAsync(tokenHandle);
+                await _referenceTokenStore.RemoveReferenceTokenAsync(tokenHandle, "reference_token_expired");
                 return Invalid(OidcConstants.ProtectedResourceErrors.ExpiredToken);
             }
 
@@ -390,7 +390,7 @@ namespace IdentityServer4.Validation
             {
                 _logger.LogWarning("Refresh token has expired. Removing from store.");
 
-                await _refreshTokenStore.RemoveRefreshTokenAsync(tokenHandle);
+                await _refreshTokenStore.RemoveRefreshTokenAsync(tokenHandle, "refresh_token_expired");
                 return Invalid(OidcConstants.TokenErrors.InvalidGrant);
             }
 

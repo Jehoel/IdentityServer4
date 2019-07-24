@@ -213,7 +213,7 @@ namespace IdentityServer4.Services
                 {
                     Logger.LogTrace("Creating reference access token");
 
-                    var handle = await ReferenceTokenStore.StoreReferenceTokenAsync(token);
+                    var handle = await ReferenceTokenStore.StoreReferenceTokenAsync(token, "new_reference_token");
 
                     tokenResult = handle;
                 }

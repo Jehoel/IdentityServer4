@@ -108,7 +108,7 @@ namespace IdentityServer4.ResponseHandling
                 if (token.ClientId == validationResult.Client.ClientId)
                 {
                     Logger.LogDebug("Access token revoked");
-                    await ReferenceTokenStore.RemoveReferenceTokenAsync(validationResult.Token);
+                    await ReferenceTokenStore.RemoveReferenceTokenAsync(validationResult.Token, "access_token_revoked");
                 }
                 else
                 {
@@ -133,8 +133,8 @@ namespace IdentityServer4.ResponseHandling
                 if (token.ClientId == validationResult.Client.ClientId)
                 {
                     Logger.LogDebug("Refresh token revoked");
-                    await RefreshTokenStore.RemoveRefreshTokenAsync(validationResult.Token);
-                    await ReferenceTokenStore.RemoveReferenceTokensAsync(token.SubjectId, token.ClientId);
+                    await RefreshTokenStore.RemoveRefreshTokenAsync(validationResult.Token, "refresh_token_revoked");
+                    await ReferenceTokenStore.RemoveReferenceTokensAsync(token.SubjectId, token.ClientId, "refresh_token_revoked");
                 }
                 else
                 {

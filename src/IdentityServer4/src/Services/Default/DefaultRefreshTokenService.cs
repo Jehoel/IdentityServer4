@@ -77,7 +77,7 @@ namespace IdentityServer4.Services
                 AccessToken = accessToken
             };
 
-            var handle = await RefreshTokenStore.StoreRefreshTokenAsync(refreshToken);
+            var handle = await RefreshTokenStore.StoreRefreshTokenAsync(refreshToken, "new_refresh_token");
             return handle;
         }
 
@@ -102,7 +102,7 @@ namespace IdentityServer4.Services
                 _logger.LogDebug("Token usage is one-time only. Generating new handle");
 
                 // delete old one
-                await RefreshTokenStore.RemoveRefreshTokenAsync(handle);
+                await RefreshTokenStore.RemoveRefreshTokenAsync(handle, "one_time_refresh_token_used");
 
                 // create new one
                 needsCreate = true;
@@ -134,12 +134,12 @@ namespace IdentityServer4.Services
 
             if (needsCreate)
             {
-                handle = await RefreshTokenStore.StoreRefreshTokenAsync(refreshToken);
+                handle = await RefreshTokenStore.StoreRefreshTokenAsync(refreshToken, "one_time_refresh_token_reissued");
                 _logger.LogDebug("Created refresh token in store");
             }
             else if (needsUpdate)
             {
-                await RefreshTokenStore.UpdateRefreshTokenAsync(handle, refreshToken);
+                await RefreshTokenStore.UpdateRefreshTokenAsync(handle, refreshToken, "sliding_expiration_refresh_token_updated");
                 _logger.LogDebug("Updated refresh token in store");
             }
             else

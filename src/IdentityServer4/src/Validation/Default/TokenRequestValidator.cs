@@ -217,7 +217,7 @@ namespace IdentityServer4.Validation
                 return Invalid(OidcConstants.TokenErrors.InvalidGrant);
             }
 
-            await _authorizationCodeStore.RemoveAuthorizationCodeAsync(code);
+            await _authorizationCodeStore.RemoveAuthorizationCodeAsync(code, "authorization_code_used");
 
             if (authZcode.CreationTime.HasExceeded(authZcode.Lifetime, _clock.UtcNow.UtcDateTime))
             {

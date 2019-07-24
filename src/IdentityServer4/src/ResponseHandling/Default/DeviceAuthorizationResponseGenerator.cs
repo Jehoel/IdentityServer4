@@ -134,7 +134,7 @@ namespace IdentityServer4.ResponseHandling
                 Lifetime = response.DeviceCodeLifetime,
                 CreationTime = Clock.UtcNow.UtcDateTime,
                 RequestedScopes = validationResult.ValidatedRequest.RequestedScopes
-            });
+            }, "new_device_flow");
 
             return response;
         }

@@ -99,7 +99,7 @@ namespace IdentityServer4.ResponseHandling
             Logger.LogDebug("Creating Hybrid Flow response.");
 
             var code = await CreateCodeAsync(request);
-            var id = await AuthorizationCodeStore.StoreAuthorizationCodeAsync(code);
+            var id = await AuthorizationCodeStore.StoreAuthorizationCodeAsync(code, "new_hybrid_flow");
 
             var response = await CreateImplicitFlowResponseAsync(request, id);
             response.Code = id;
@@ -117,7 +117,7 @@ namespace IdentityServer4.ResponseHandling
             Logger.LogDebug("Creating Authorization Code Flow response.");
 
             var code = await CreateCodeAsync(request);
-            var id = await AuthorizationCodeStore.StoreAuthorizationCodeAsync(code);
+            var id = await AuthorizationCodeStore.StoreAuthorizationCodeAsync(code, "new_code_flow");
 
             var response = new AuthorizeResponse
             {

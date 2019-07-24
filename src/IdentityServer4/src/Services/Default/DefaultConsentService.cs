@@ -105,7 +105,7 @@ namespace IdentityServer4.Services
             if (consent.Expiration.HasExpired(Clock.UtcNow.UtcDateTime))
             {
                 Logger.LogDebug("Consent found in consent store is expired, consent is required");
-                await UserConsentStore.RemoveUserConsentAsync(consent.SubjectId, consent.ClientId);
+                await UserConsentStore.RemoveUserConsentAsync(consent.SubjectId, consent.ClientId, "user_consent_expired");
                 return true;
             }
 
@@ -170,13 +170,13 @@ namespace IdentityServer4.Services
                         consent.Expiration = consent.CreationTime.AddSeconds(client.ConsentLifetime.Value);
                     }
 
-                    await UserConsentStore.StoreUserConsentAsync(consent);
+                    await UserConsentStore.StoreUserConsentAsync(consent, "consent_provided_for_scopes");
                 }
                 else
                 {
                     Logger.LogDebug("Client allows remembering consent, and no scopes provided. Removing consent from consent store for subject: {subject}", subject.GetSubjectId());
 
-                    await UserConsentStore.RemoveUserConsentAsync(subjectId, clientId);
+                    await UserConsentStore.RemoveUserConsentAsync(subjectId, clientId, "no_consent_provided_for_scopes");
                 }
             }
         }

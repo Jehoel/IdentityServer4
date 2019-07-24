@@ -168,7 +168,7 @@ namespace IdentityServer4.Services
             if (user != null)
             {
                 var subject = user.GetSubjectId();
-                await _grants.RemoveAllGrantsAsync(subject, clientId);
+                await _grants.RemoveAllGrantsAsync(subject, clientId, "user_consent_revoked");
             }
         }
 
@@ -181,7 +181,7 @@ namespace IdentityServer4.Services
                 var clients = await _userSession.GetClientListAsync();
                 foreach (var client in clients)
                 {
-                    await _grants.RemoveAllGrantsAsync(subject, client);
+                    await _grants.RemoveAllGrantsAsync(subject, client, "user_session_consent_revoked");
                 }
             }
         }
