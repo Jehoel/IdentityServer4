@@ -17,7 +17,7 @@ namespace IdentityServer4.Stores
         /// </summary>
         /// <param name="token">The token.</param>
         /// <returns></returns>
-        Task<string> StoreReferenceTokenAsync(Token token);
+        Task<string> StoreReferenceTokenAsync(Token token, string reason);
 
         /// <summary>
         /// Gets the reference token.
@@ -30,15 +30,17 @@ namespace IdentityServer4.Stores
         /// Removes the reference token.
         /// </summary>
         /// <param name="handle">The handle.</param>
+        /// <param name="reason">The reason for the removal.</param>
         /// <returns></returns>
-        Task RemoveReferenceTokenAsync(string handle);
+        Task RemoveReferenceTokenAsync(string handle, string reason);
 
         /// <summary>
         /// Removes the reference tokens.
         /// </summary>
         /// <param name="subjectId">The subject identifier.</param>
         /// <param name="clientId">The client identifier.</param>
+        /// <param name="reason">The reason for the removal.</param>
         /// <returns></returns>
-        Task RemoveReferenceTokensAsync(string subjectId, string clientId);
+        Task RemoveReferenceTokensAsync(string subjectId, string clientId, string reason);
     }
 }

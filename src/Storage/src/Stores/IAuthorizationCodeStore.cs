@@ -17,7 +17,7 @@ namespace IdentityServer4.Stores
         /// </summary>
         /// <param name="code">The code.</param>
         /// <returns></returns>
-        Task<string> StoreAuthorizationCodeAsync(AuthorizationCode code);
+        Task<string> StoreAuthorizationCodeAsync(AuthorizationCode code, string reason);
 
         /// <summary>
         /// Gets the authorization code.
@@ -30,7 +30,8 @@ namespace IdentityServer4.Stores
         /// Removes the authorization code.
         /// </summary>
         /// <param name="code">The code.</param>
+        /// <param name="reason">The reason for the removal.</param>
         /// <returns></returns>
-        Task RemoveAuthorizationCodeAsync(string code);
+        Task RemoveAuthorizationCodeAsync(string code, string reason);
    }
 }

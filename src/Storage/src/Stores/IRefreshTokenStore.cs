@@ -17,15 +17,16 @@ namespace IdentityServer4.Stores
         /// </summary>
         /// <param name="refreshToken">The refresh token.</param>
         /// <returns></returns>
-        Task<string> StoreRefreshTokenAsync(RefreshToken refreshToken);
+        Task<string> StoreRefreshTokenAsync(RefreshToken refreshToken, string reason);
 
         /// <summary>
         /// Updates the refresh token.
         /// </summary>
         /// <param name="handle">The handle.</param>
         /// <param name="refreshToken">The refresh token.</param>
+        /// <param name="reason">The reason for the update.</param>
         /// <returns></returns>
-        Task UpdateRefreshTokenAsync(string handle, RefreshToken refreshToken);
+        Task UpdateRefreshTokenAsync(string handle, RefreshToken refreshToken, string reason);
 
         /// <summary>
         /// Gets the refresh token.
@@ -38,15 +39,17 @@ namespace IdentityServer4.Stores
         /// Removes the refresh token.
         /// </summary>
         /// <param name="refreshTokenHandle">The refresh token handle.</param>
+        /// <param name="reason">The reason for the removal.</param>
         /// <returns></returns>
-        Task RemoveRefreshTokenAsync(string refreshTokenHandle);
+        Task RemoveRefreshTokenAsync(string refreshTokenHandle, string reason);
 
         /// <summary>
         /// Removes the refresh tokens.
         /// </summary>
         /// <param name="subjectId">The subject identifier.</param>
         /// <param name="clientId">The client identifier.</param>
+        /// <param name="reason">The reason for the removal.</param>
         /// <returns></returns>
-        Task RemoveRefreshTokensAsync(string subjectId, string clientId);
+        Task RemoveRefreshTokensAsync(string subjectId, string clientId, string reason);
     }
 }

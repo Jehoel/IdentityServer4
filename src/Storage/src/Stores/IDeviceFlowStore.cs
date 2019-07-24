@@ -19,7 +19,7 @@ namespace IdentityServer4.Stores
         /// <param name="userCode">The user code.</param>
         /// <param name="data">The data.</param>
         /// <returns></returns>
-        Task StoreDeviceAuthorizationAsync(string deviceCode, string userCode, DeviceCode data);
+        Task StoreDeviceAuthorizationAsync(string deviceCode, string userCode, DeviceCode data, string reason);
 
         /// <summary>
         /// Finds device authorization by user code.
@@ -39,12 +39,14 @@ namespace IdentityServer4.Stores
         /// </summary>
         /// <param name="userCode">The user code.</param>
         /// <param name="data">The data.</param>
-        Task UpdateByUserCodeAsync(string userCode, DeviceCode data);
+        /// <param name="reason">The reason for the removal.</param>
+        Task UpdateByUserCodeAsync(string userCode, DeviceCode data, string reason);
 
         /// <summary>
         /// Removes the device authorization, searching by device code.
         /// </summary>
         /// <param name="deviceCode">The device code.</param>
-        Task RemoveByDeviceCodeAsync(string deviceCode);
+        /// <param name="reason">The reason for the removal.</param>
+        Task RemoveByDeviceCodeAsync(string deviceCode, string reason);
     }
 }

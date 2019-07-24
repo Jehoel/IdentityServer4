@@ -18,7 +18,7 @@ namespace IdentityServer4.Stores
         /// </summary>
         /// <param name="grant">The grant.</param>
         /// <returns></returns>
-        Task StoreAsync(PersistedGrant grant);
+        Task StoreAsync(PersistedGrant grant, string reason);
 
         /// <summary>
         /// Gets the grant.
@@ -38,16 +38,18 @@ namespace IdentityServer4.Stores
         /// Removes the grant by key.
         /// </summary>
         /// <param name="key">The key.</param>
+        /// <param name="reason">The reason for the removal.</param>
         /// <returns></returns>
-        Task RemoveAsync(string key);
+        Task RemoveAsync(string key, string reason);
 
         /// <summary>
         /// Removes all grants for a given subject id and client id combination.
         /// </summary>
         /// <param name="subjectId">The subject identifier.</param>
         /// <param name="clientId">The client identifier.</param>
+        /// <param name="reason">The reason for the removal.</param>
         /// <returns></returns>
-        Task RemoveAllAsync(string subjectId, string clientId);
+        Task RemoveAllAsync(string subjectId, string clientId, string reason);
 
         /// <summary>
         /// Removes all grants of a give type for a given subject id and client id combination.
@@ -55,7 +57,8 @@ namespace IdentityServer4.Stores
         /// <param name="subjectId">The subject identifier.</param>
         /// <param name="clientId">The client identifier.</param>
         /// <param name="type">The type.</param>
+        /// <param name="reason">The reason for the removal.</param>
         /// <returns></returns>
-        Task RemoveAllAsync(string subjectId, string clientId, string type);
+        Task RemoveAllAsync(string subjectId, string clientId, string type, string reason);
     }
 }
